@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/font-awesome/css/font-awesome.css"
+    />
+
+    <link
+      rel="stylesheet"
+      id="font-awesome-official-css"
+      href="https://use.fontawesome.com/releases/v6.4.2/css/all.css"
+      media="all"
+      integrity="sha384-blOohCVdhjmtROpu8+CfTnUWham9nkX7P7OZQMst+RUnhtoY/9qemFAkIKOYxDI3"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="./img/pict_daibutsuden.png" />
+    <link rel="bookmark" href="./img/pict_daibutsuden.png" />
+    <script type="module" src="./js/index.js"></script>
+    <script
+      src="https://www.todaiji.or.jp/wp-includes/js/jquery/jquery.min.js?ver=3.7.0"
+      id="jquery-core-js"
+    ></script>
+    <script
+      src="https://www.todaiji.or.jp/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"
+      id="jquery-migrate-js"
+    ></script>
+  </head>
+  <body>
+    <!-- TOP header -->
+    <div class="fixed-header-wrapper">
+      <header class="fixed-header">
+        <!-- navbar whole -->
+        <div class="site-header-inner flex items-center justify-between">
+          <h1 class="brand">
+            <a href="/" class="custom-logo-link">
+              <img
+                src="https://www.todaiji.or.jp/wp-content/uploads/2021/11/logo.svg"
+                class="logo float-left"
+              />
+            </a>
+          </h1>
+          <!-- navbar裡面全區塊 -->
+          <div class="flex align-center flex-wrap justify-between">
+            <div class="navbar-wrapper flex justify-between lg:hidden">
+              <div class="opening-time flex">
+                <!--top-time-->
+                <div class="flex justify-center text-center">
+                  <i class="far fa-calendar-alt mr-2 text-base"></i>
+                  <div class="date"></div>
+                  <div id="clockDisplay" class="ml-2"></div>
+                </div>
+                <p class="items-center font-extrabold ml-20">
+                  營業時間：7:30 - 17:30
+                </p>
+              </div>
+
+              <div class="site-header">
+                <!--top-menu-->
+                <ul class="flex justify-around items-end">
+                  <li><a href="#" class="">▲票價 參拜時間</a></li>
+                  <li><a href="#">▲通知</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="site-header-language lg:hidden">
+              <select
+                class="language-switcher bg-gray-800 text-white"
+                name=""
+                id=""
+              >
+                <option value="">中文</option>
+                <option value="">English</option>
+              </select>
+            </div>
+            <!-- 下拉選單區域 -->
+            <div class="overlay justify-between text-center w-full"></div>
+            <ul class="navbar-list">
+              <!-- this -->
+
+              <li class="list-item">
+                <a href="./history.html" class="lg:text-base hvr-grow"
+                  >東大寺歷史</a
+                >
+                <ul class="sub-menu">
+                  <li class="menu-item"><a href="./event.html">8世紀</a></li>
+                  <li class="menu-item"><a href="#">12-14世紀</a></li>
+                  <li class="menu-item"><a href="#">17-18世紀</a></li>
+                  <li class="menu-item"><a href="#">19世紀-</a></li>
+                </ul>
+              </li>
+              <!-- this -->
+
+              <li>
+                <div class="list-item">
+                  <a href="./daibutsuden.html" class="lg:text-base hvr-grow"
+                    >參拜指南</a
+                  >
+                  <ul class="sub-menu">
+                    <li class="menu-item"><a href="#">票價 參拜時間</a></li>
+                    <li class="menu-item"><a href="#">寺廟境內地圖</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="list-item">
+                  <a href="./event.html" class="nav-link lg:text-base hvr-grow"
+                    >每年定例活動與儀式</a
+                  >
+                  <ul class="sub-menu">
+                    <li class="menu-item">
+                      <a href="#">每年定例活動與儀式</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="list-item">
+                  <a href="#" class="nav-link lg:text-base hvr-grow"
+                    >交通指南</a
+                  >
+                  <ul class="sub-menu">
+                    <li class="menu-item"><a href="#">朱印</a></li>
+                    <li class="menu-item"><a href="#">抄經‧書佛</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="list-item">
+                  <div
+                    href="#"
+                    class="nav-link openpopup lg:text-base cursor-pointer hvr-grow"
+                  >
+                    聯絡我們
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- popup -->
+          <div class="main flex">
+            <div
+              class="container-popup w-[100%] h-[1000vh] absolute justify-center backdrop-blur-sm text-center"
+              id="container-popup"
+            >
+              <div class="popup relative w-[650px] max-h-[100vh] sm:mt-0">
+                <div
+                  class="close-btn absolute w-[30px] h-[30px] bg-black text-white text-center rounded-full cursor-pointer"
+                >
+                  &times;
+                </div>
+
+                <div class="kumoimg absolute w-[40%]">
+                  <img src="./img/kumo.png" alt="" />
+                </div>
+
+                <div class="kumotop absolute w-[40%]">
+                  <img src="./img/kumo.png" alt="" />
+                </div>
+                <section class="contact sm:mt-60">
+                  <svg
+                    class="logo w-[135px] h-[95px] m-auto"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <image
+                      class="m-auto"
+                      xlink:href="./img/logo.svg"
+                      width="120"
+                      height="90"
+                      alt="Logo"
+                    />
+                  </svg>
+                  <h1 class="text-sxll">聯絡我們</h1>
+                  <span class="hr w-[100px] h-[2px] block m-auto mb-10"></span>
+                  <form class="contact-form">
+                    <div class="form-group mt-4">
+                      <label class="flex" for="name">姓名</label>
+                      <input
+                        class="w-[290px] h-[35px] border-b focus-visible: outline-none border-gray-300 text-gray-500"
+                        type="text"
+                        name="name"
+                        id="name"
+                      />
+                    </div>
+
+                    <div class="form-group mt-4">
+                      <label class="flex" for="mobile">手機</label>
+                      <input
+                        class="w-[290px] h-[35px] border-b focus-visible: outline-none border-gray-300 text-gray-500"
+                        type="text"
+                        name="mobile"
+                        id="mobile"
+                      />
+                    </div>
+
+                    <div class="form-group mt-4">
+                      <label class="flex" for="phone">電話</label>
+                      <input
+                        class="w-[290px] h-[35px] border-b focus-visible: outline-none border-gray-300 text-gray-500"
+                        type="text"
+                        name="phone"
+                        id="phone"
+                      />
+                    </div>
+
+                    <div class="form-group mt-4">
+                      <label class="flex" for="email">E-mail</label>
+                      <input
+                        class="w-[290px] h-[35px] border-b focus-visible: outline-none border-gray-300 text-gray-500"
+                        type="text"
+                        name="email"
+                        id="email"
+                      />
+                    </div>
+
+                    <div class="form-group mt-4 relative">
+                      <label class="flex" for="relate">意見類型</label>
+                      <div>
+                        <input
+                          class="relate w-[290px] h-[35px] border-b focus-visible: outline-none border-gray-300 text-gray-500 cursor-pointer"
+                          type="text"
+                          name="relate"
+                          id="relate"
+                          readonly="readonly"
+                        />
+                      </div>
+                      <div
+                        class="relate-option w-[290px] cursor-pointer hidden border-solid text-left absolute"
+                      >
+                        <ul>
+                          <li>(無)</li>
+                          <li>環境問題</li>
+                          <li>地圖問題</li>
+                          <li>交通問題</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                      <label class="flex" for="comment">意見內容</label>
+                      <textarea
+                        class="comment w-[290px] border-b border-gray-300 focus-visible: outline-none text-gray-500"
+                        name=""
+                        id=""
+                        cols="30"
+                        rows="4"
+                      ></textarea>
+                    </div>
+
+                    <div class="flex justify-between mt-6 sm:mb-20">
+                      <button
+                        class="submit w-[120px] h-[35px] bg-yellow-800 text-white"
+                      >
+                        <span>送出</span>
+                      </button>
+
+                      <button
+                        class="clear-form w-[120px] h-[35px] bg-yellow-800 text-white"
+                        id="clear-form"
+                      >
+                        <span>清除</span>
+                      </button>
+                    </div>
+                  </form>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          <!-- mobile  -->
+          <div class="hamburger" id="hamburgerID">
+            <div>
+              <select
+                class="mobile-language-switcher bg-gray-800 text-white sm:w-20"
+              >
+                <option value="">中文</option>
+                <option value="">English</option>
+              </select>
+            </div>
+            <div class="hamburger-bar ml-10 mr-3">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <!--END-->
+
+    <section class="landing-section">
+      <div class="slick-wrapper">
+        <img src="./img/fujimount.jpg" class="bg-img" />
+        <img src="./img/unsplash2.jpg" class="bg-img" />
+        <img src="./img/unsplash3.jpg" class="bg-img" />
+        <img src="./img/unsplash4.jpg" class="bg-img" />
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="notice-section">
+      <div class="right-illustration">
+        <img src="./img/kumo.png" alt="" />
+      </div>
+      <div class="relative">
+        <div class="notice-top h-[300px] w-[300px] bg-white"></div>
+        <div class="left-illustration">
+          <img src="./img/zenzaidouji.png" alt="" />
+        </div>
+        <div class="bottom-illustration">
+          <img src="./img/kumo.png" alt="" />
+        </div>
+      </div>
+      <div class="news">
+        <h1 class="news-title lg:m-auto">最新消息</h1>
+        <div class="news-box lg:m-auto">
+          <p class="my-8 text-base">
+            '23/11/1 <a href="#" class="category">news</a> <br />Lorem ipsum
+            dolor sit amet consectetur adipisicing elit.
+          </p>
+          <p class="my-8 text-base">
+            '23/11/1 <a href="#" class="category">news</a> <br />Lorem ipsum
+            dolor sit amet consectetur adipisicing elit.
+          </p>
+          <p class="my-8 text-base">
+            '23/11/1 <a href="#" class="category">news</a> <br />Lorem ipsum
+            dolor sit amet consectetur adipisicing elit.
+          </p>
+        </div>
+        <button type="button" class="primary-btn">更多消息</button>
+      </div>
+    </section>
+    <p class="text-center pt-5">東大寺境內禁止吸菸和無人機攝影。</p>
+
+    <!-- 介紹區域的大框框 -->
+    <section class="about-section">
+      <h1 class="about-text pt-32 md:p-10 text-3xl text-center">關於東大寺</h1>
+      <div class="about-top flex-container justify-between">
+        <div class="widget md:hidden"></div>
+        <div class="history md:w-full"></div>
+        <div class="widget md:hidden"></div>
+      </div>
+
+      <!-- 介紹區域 -->
+      <div class="box-area">
+        <div class="box-container">
+          <div class="box-wrapper">
+            <div class="area-title">
+              <h3 class="box-title text-xl">
+                <a href="#" class="box text-white">参拝のご案内</a>
+              </h3>
+              <h6 class="heading-title">
+                <a href="#" class="text-white">Information</a>
+              </h6>
+            </div>
+          </div>
+
+          <div class="box-wrapper">
+            <div class="area-title">
+              <h3 class="box-title text-xl">
+                <a href="#" class="box text-white">参拝のご案内</a>
+              </h3>
+              <h6 class="heading-title">
+                <a href="#" class="text-white">Information</a>
+              </h6>
+            </div>
+          </div>
+
+          <div class="box-wrapper">
+            <div class="area-title">
+              <h3 class="box-title text-xl">
+                <a href="#" class="box text-white">参拝のご案内</a>
+              </h3>
+              <h6 class="heading-title">
+                <a href="#" class="text-white">Information</a>
+              </h6>
+            </div>
+          </div>
+
+          <div class="box-wrapper">
+            <div class="area-title">
+              <h3 class="box-title text-xl">
+                <a href="#" class="box text-white">参拝のご案内</a>
+              </h3>
+              <h6 class="heading-title">
+                <a href="#" class="text-white">Information</a>
+              </h6>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-box-container flex justify-center items-center">
+          <div class="bottom-box-wrapper">
+            <a href="">
+              <span class="text-lg text-white sm:text-base"
+                >二月堂本堂・十一面護摩祈祷について</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- backImg -->
+      <div>
+        <div class="back-img">
+          <img class="soryo" src="./img/soryo.png" alt="" />
+        </div>
+      </div>
+
+      <div class="back-img">
+        <img class="kumo" src="./img/kumo.png" alt="" />
+        <img class="fubuki" src="./img/fubuki.png" alt="" />
+      </div>
+
+      <div></div>
+    </section>
+
+    <!-- Eighth Palace Area -->
+    <section class="tutorial-section">
+      <h1 class="text-3xl text-center">寺廟境內指南</h1>
+      <div class="tutorial-box-container">
+        <div class="tutorial-box-wrapper hvr-bob">
+          <a href="#" class="tutorial-box">
+            <h2>大佛殿</h2>
+          </a>
+        </div>
+
+        <div class="tutorial-box-wrapper hvr-bob">
+          <a href="#" class="tutorial-box">
+            <h2>法華堂</h2>
+          </a>
+        </div>
+
+        <div class="tutorial-box-wrapper hvr-bob">
+          <a href="#" class="tutorial-box">
+            <h2>戒壇堂</h2>
+          </a>
+        </div>
+
+        <div class="tutorial-box-wrapper hvr-bob">
+          <a href="#" class="tutorial-box">
+            <h2>展覽館</h2>
+          </a>
+        </div>
+      </div>
+      <div class="tutorial-box-container">
+        <div class="tutorial-box-wrapper hvr-bob">
+          <a href="#" class="tutorial-box">
+            <h2>其他佛堂</h2>
+          </a>
+        </div>
+
+        <div class="tutorial-box-wrapper hvr-bob">
+          <a href="#" class="tutorial-box">
+            <h2>寺廟境內地圖</h2>
+          </a>
+        </div>
+
+        <div class="tutorial-box-wrapper hvr-bob">
+          <a href="#" class="tutorial-box">
+            <h2>下載資料</h2>
+          </a>
+        </div>
+
+        <div class="tutorial-box-wrapper hvr-bob">
+          <a href="#" class="tutorial-box">
+            <h2>虛擬3D參拜</h2>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 長條一格一格 -->
+    <section class="sns-section">
+      <div class="shikisaikan_bg">
+        <a href="">
+          <p>東大寺</p>
+          四季彩感
+        </a>
+      </div>
+
+      <div class="season-pic-container">
+        <div class="four-season">
+          <a href="#" class="season-pic">
+            <img src="./img/spring.png" alt="" />
+          </a>
+        </div>
+
+        <div class="four-season">
+          <a href="#" class="season-pic">
+            <img src="./img/summer.jpg" alt="" />
+          </a>
+        </div>
+
+        <div class="four-season">
+          <a href="#" class="season-pic">
+            <img src="./img/fall.jpg" alt="" />
+          </a>
+        </div>
+
+        <div class="four-season">
+          <a href="#" class="season-pic">
+            <img src="./img/winter.jpg" alt="" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Third website -->
+    <div class="sns-container">
+      <ul class="sns-menu">
+        <li class="sns-menu-item">
+          <a href=""><i class="fab fa-facebook-square"></i>Facebook</a>
+        </li>
+
+        <li class="sns-menu-item">
+          <a href=""><i class="fa-brands fa-twitter"></i>Twitter</a>
+        </li>
+
+        <li class="sns-menu-item">
+          <a href=""><i class="fab fa-instagram"></i>Instagram</a>
+        </li>
+
+        <li class="sns-menu-item">
+          <a href=""><i class="fab fa-youtube"></i>Youtube</a>
+        </li>
+      </ul>
+    </div>
+
+    <!------------------------------------------ footer 固定 -->
+    <div class="pagetop relative">
+      <a href="#">
+        <img
+          class="pagetop-img absolute hvr-buzz-out"
+          src="./img/pagetop.png"
+          alt=""
+        />
+      </a>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="footer-wrapper flex justify-between sm:block">
+        <!-- left info -->
+        <div class="footer-info flex justify-between">
+          <div>
+            <div class="footer-logo">
+              <img
+                src="https://www.todaiji.or.jp/wp-content/uploads/2021/11/logo.svg"
+                class="logo"
+              />
+            </div>
+
+            <div class="footer-office">
+              <p>Contact</p>
+              |
+              <span>Tōdai-ji Office</span>
+            </div>
+
+            <div class="footer-adress">
+              <p>Address</p>
+              |
+              <span
+                >406-1 Zoushi-cho Nara-shi <br />
+                Nara-ken 630-8587</span
+              >
+            </div>
+
+            <div class="footer-tel">
+              <p>TEL</p>
+              |
+              <span>0742-22-5511</span>
+            </div>
+
+            <div class="footer-fax">
+              <p>FAX</p>
+              |
+              <span>0742-22-0808</span>
+            </div>
+          </div>
+
+          <div class="footer-info-right">
+            <div class="bg-white h-[30px] w-[160px] text-center my-2">
+              <a class="leading-[30px]">交通指南</a>
+            </div>
+            <div class="bg-white h-[30px] w-[160px] text-center my-2">
+              <a class="leading-[30px]">下載資料</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- right map -->
+        <div class="footer-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3611.618802478526!2d121.4332780753802!3d25.148575377742368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a57a4413ebd9%3A0x97aedc829435402c!2z5piO5ZyS5aSn5L2b5a-6!5e0!3m2!1szh-TW!2stw!4v1699411546612!5m2!1szh-TW!2stw"
+            width="100%"
+            height="100%"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+        </div>
+      </div>
+
+      <!-- /* icon area */ -->
+      <div
+        class="footer-icon-bar flex justify-between sm:flex-wrap sm:justify-center"
+      >
+        <div class="footer-icon-bar-wrapper flex justify-between">
+          <span><i class="fa fa-info-circle" aria-hidden="true"></i> 通知</span>
+          <span
+            ><i class="fa fa-map-marker" aria-hidden="true"></i>
+            寺廟境內地圖</span
+          >
+        </div>
+
+        <div class="footer-icon-bar-wrapper flex justify-between">
+          <li class="icon-item list-none text-xl">
+            <a href="">
+              <i class="fab fa-facebook-square"></i>
+            </a>
+          </li>
+
+          <li class="icon-item list-none text-xl">
+            <a href="">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+          </li>
+
+          <li class="icon-item list-none text-xl">
+            <a href="">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+
+          <li class="icon-item list-none text-xl">
+            <a href="">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+        </div>
+      </div>
+
+      <!-- footer menu -->
+      <div class="footer-sub-container">
+        <ul class="top-menu md:hidden">
+          <!-- 1 -->
+          <li class="top-item">
+            <a href="./history.html" class="hvr-pulse">東大寺歷史</a>
+            <ul class="footer-menu">
+              <li class="footer-item"><a href="">8世紀</a></li>
+              <li class="footer-item"><a href="">12-14世紀</a></li>
+              <li class="footer-item"><a href="">17-18世紀</a></li>
+              <li class="footer-item"><a href="">19世紀-</a></li>
+            </ul>
+          </li>
+          <!-- 2 -->
+          <li class="top-item">
+            <a href="./daibutsuden.html" class="hvr-pulse">參拜指南</a>
+            <ul class="footer-menu">
+              <li class="footer-item"><a href="">票價 參拜時間</a></li>
+              <li class="footer-item"><a href="">寺廟境內地圖</a></li>
+              <li class="footer-item"><a href="">大佛殿</a></li>
+              <li class="footer-item"><a href="">法華堂</a></li>
+            </ul>
+          </li>
+          <!-- 3 -->
+          <li class="top-item">
+            <a href="./event.html" class="hvr-pulse">每年定例活動與儀式</a>
+            <ul class="footer-menu">
+              <li class="footer-item"><a href="">每年定例活動與儀式</a></li>
+            </ul>
+          </li>
+          <!-- 4-->
+          <li class="top-item">
+            <a href="" class="hvr-pulse">交通指南</a>
+            <ul class="footer-menu">
+              <li class="footer-item"><a href="">東大寺四季彩感</a></li>
+              <li class="footer-item"><a href="">虛擬3D參拜</a></li>
+            </ul>
+          </li>
+
+          <!-- 5-->
+          <li>
+            <div class="top-item">
+              <a href="" class="openpopup hvr-pulse">聯絡我們</a>
+            </div>
+          </li>
+        </ul>
+
+        <!-- /*  RWD footer accordion */ -->
+        <ul class="accordion-menu hidden md:block">
+          <li>
+            <div class="dropdownlink">
+              <a href="./history.html">東大寺歷史</a>
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+              <li><a href="#">8世紀</a></li>
+              <li><a href="#">12-14世紀</a></li>
+              <li><a href="#">17-18世紀</a></li>
+              <li><a href="#">19世紀-</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="dropdownlink">
+              <a href="./daibutsuden.html">參拜指南</a>
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+              <li><a href="#">票價 參拜時間</a></li>
+              <li><a href="#">寺廟境內地圖</a></li>
+              <li><a href="#">大佛殿</a></li>
+              <li><a href="#">法華堂</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="dropdownlink">
+              <a href="./event.html">每年定例活動與儀式</a>
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+              <li><a href="#">每年定例活動與儀式</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="dropdownlink">
+              <a href="">交通指南</a>
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+              <li><a href="#">東大寺四季彩感</a></li>
+              <li><a href="#">虛擬3D參拜</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="dropdownlink">
+              <a href="" class="openpopup">聯絡我們</a>
+            </div>
+          </li>
+        </ul>
+
+        <div class="footer-translator">譯者: 王 馬吉</div>
+      </div>
+
+      <div class="footer-notice">
+        <p>
+          在這個寧靜的午後，陽光透過窗戶灑進房間，為一本打開的書籍投下溫暖的陰影。彷彿在和大地交談。<br />
+          本站所刊登的各種圖像文章等信息資料未經東大寺版權所有者授權，不得利用（複製、轉載、加工）
+        </p>
+      </div>
+
+      <p class="copyright">Copyright 2009-2023</p>
+    </footer>
+  </body>
+</html>

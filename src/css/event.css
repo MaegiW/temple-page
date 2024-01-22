@@ -1,0 +1,115 @@
+/* @import '/node_modules/slick-carousel/slick/slick.css';
+@import '/node_modules/slick-carousel/slick/slick-theme.css';
+@import 'footer.css';
+@import 'navbar.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+.breadcrumb-bar{
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    z-index: 1;
+    color: #ffffff;
+    
+}
+
+.button-wrapper{
+    width: 225px;
+    height: 40px;
+    
+}
+
+.table-menu{
+    width: 1140px;
+}
+
+
+.event-inform{
+    width: 100%;
+    
+}
+
+.accordion-month{
+    border: 1px solid black;
+    border-width: 1px 1px 5px 1px;
+    margin: 30px  5px 0 55px;
+
+    @screen lg{
+        margin: 0;
+    }
+
+}
+
+.momth_event{
+    border: 1px solid rgb(172, 171, 171);
+    margin: 28px  28px 0 0px;
+
+    @screen md{
+        margin: 28px  0 0 0px;
+    }
+
+}
+
+
+
+.event-list span{
+    border-right: 1px solid rgb(172, 171, 171);
+    padding: 5px;
+  
+}
+
+.event-list3 span{
+    border-right: 1px solid rgb(172, 171, 171);
+    padding: 5px;
+
+    @screen md{
+        border-right: 0px;
+    }
+}
+
+.inform-box p{
+    padding: 0 25px 0 25px;
+
+    @screen lg{
+    padding: 20px 0;
+
+    }
+}
+
+.event-accordion{
+    max-height: 0;
+    overflow: hidden;
+    transition: .3s linear;
+
+}
+
+.accordion-header.active .event-accordion{
+    max-height: 100%;
+    transition: .3s linear;
+
+}
+.icon{
+
+}
+
+.event-item {
+    background-color: none;
+    @screen md{
+        flex-wrap: wrap;
+    }
+}
+
+.event-last{
+    @screen md{
+        border-top: 1px solid rgb(172, 171, 171);
+    
+    }
+}
+
+.event-item.clicked {
+    background-color: rgb(148, 93, 21) ;
+    color: aliceblue;
+
+}

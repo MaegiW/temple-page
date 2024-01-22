@@ -1,0 +1,44 @@
+/* @import '/node_modules/slick-carousel/slick/slick.css';
+@import '/node_modules/slick-carousel/slick/slick-theme.css';
+@import 'footer.css';
+@import 'navbar.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+.content-area{
+    max-width:1100px;
+    margin: 0 auto;
+
+}
+
+.container-top{
+    margin:100px 0 0 0;
+}
+
+.breadcrumb-bar{
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    z-index: 1;
+    color: #ffffff;
+    
+}
+
+.top-container{
+    border-bottom: 1px solid rgb(194, 193, 193);
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.container_menu{
+    gap: 10;
+    margin-top: 50px;
+}
+
+.img-box img{
+    width: 225px;
+    @screen sm{
+        width: 160px;
+    }
+}

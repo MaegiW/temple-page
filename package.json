@@ -1,0 +1,30 @@
+{
+  "name": "parcel-tailwind-temple-page",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/*.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/*.html",
+    "build": "rm -rf ./dist && parcel build src/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "autoprefixer": "^10.4.16",
+    "parcel": "^2.10.0",
+    "postcss": "^8.4.32",
+    "postcss-import": "^15.1.0",
+    "rimraf": "^5.0.5",
+    "tailwindcss": "^3.4.0"
+  },
+  "dependencies": {
+    "@parcel/transformer-postcss": "^2.10.3",
+    "animate.css": "^4.1.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.7.1",
+    "slick-carousel": "^1.8.1"
+  }
+}

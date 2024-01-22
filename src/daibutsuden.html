@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="../node_modules/font-awesome/css/font-awesome.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      id="font-awesome-official-css"
+      href="https://use.fontawesome.com/releases/v6.4.2/css/all.css"
+      media="all"
+      integrity="sha384-blOohCVdhjmtROpu8+CfTnUWham9nkX7P7OZQMst+RUnhtoY/9qemFAkIKOYxDI3"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="./img/pict_daibutsuden.png" />
+    <link rel="bookmark" href="./img/pict_daibutsuden.png" />
+    <script type="module" src="./js/index.js"></script>
+    <script
+      src="https://www.todaiji.or.jp/wp-includes/js/jquery/jquery.min.js?ver=3.7.0"
+      id="jquery-core-js"
+    ></script>
+    <script
+      src="https://www.todaiji.or.jp/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"
+      id="jquery-migrate-js"
+    ></script>
+  </head>
+  <body>
+    <!-- TOP header -->
+    <div class="fixed-header-wrapper">
+      <header class="fixed-header">
+        <!-- navbar whole -->
+        <div class="site-header-inner flex items-center justify-between">
+          <h1 class="brand">
+            <a href="/" class="custom-logo-link">
+              <img
+                src="https://www.todaiji.or.jp/wp-content/uploads/2021/11/logo.svg"
+                class="logo float-left"
+              />
+            </a>
+          </h1>
+          <!-- navbar裡面全區塊 -->
+          <div class="flex align-center flex-wrap justify-between">
+            <div class="navbar-wrapper flex justify-between lg:hidden">
+              <div class="opening-time flex">
+                <!--top-time-->
+                <div class="flex justify-center text-center">
+                  <i class="far fa-calendar-alt mr-2 text-base"></i>
+                  <div class="date"></div>
+                  <div id="clockDisplay" class="ml-2"></div>
+                </div>
+                <p class="items-center font-extrabold ml-20">
+                  營業時間：7:30 - 17:30
+                </p>
+              </div>
+
+              <div class="site-header">
+                <!--top-menu-->
+                <ul class="flex justify-around items-end">
+                  <li><a href="#">▲票價 參拜時間</a></li>
+                  <li><a href="#">▲通知</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="site-header-language lg:hidden">
+              <select
+                class="language-switcher bg-gray-800 text-white"
+                name=""
+                id=""
+              >
+                <option value="">中文</option>
+                <option value="">English</option>
+              </select>
+            </div>
+
+            <!-- 下拉選單區域 -->
+            <div class="overlay justify-between text-center w-full"></div>
+            <ul class="navbar-list">
+              <li>
+                <div class="list-item">
+                  <a
+                    href="./history.html"
+                    class="nav-link lg:text-base hvr-grow"
+                    >東大寺歷史</a
+                  >
+                  <ul class="sub-menu">
+                    <li class="menu-item"><a href="#">8世紀</a></li>
+                    <li class="menu-item"><a href="#">12-14世紀</a></li>
+                    <li class="menu-item"><a href="#">17-18世紀</a></li>
+                    <li class="menu-item"><a href="#">19世紀-</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="list-item">
+                  <a
+                    href="./daibutsuden.html"
+                    class="nav-link lg:text-base hvr-grow"
+                    >參拜指南</a
+                  >
+                  <ul class="sub-menu">
+                    <li class="menu-item"><a href="#">票價 參拜時間</a></li>
+                    <li class="menu-item"><a href="#">寺廟境內地圖</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="list-item">
+                  <a href="./event.html" class="nav-link lg:text-base hvr-grow"
+                    >每年定例活動與儀式</a
+                  >
+                  <ul class="sub-menu">
+                    <li class="menu-item">
+                      <a href="#">每年定例活動與儀式</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="list-item">
+                  <a href="#" class="nav-link lg:text-base hvr-grow"
+                    >交通指南</a
+                  >
+                  <ul class="sub-menu">
+                    <li class="menu-item"><a href="#">朱印</a></li>
+                    <li class="menu-item"><a href="#">抄經‧書佛</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="list-item">
+                  <div
+                    href="#"
+                    class="nav-link openpopup lg:text-base cursor-pointer hvr-grow"
+                  >
+                    聯絡我們
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- popup -->
+          <div class="main flex">
+            <div
+              class="container-popup w-[100%] h-[1000px] absolute justify-center backdrop-blur-sm text-center"
+              id="container-popup"
+            >
+              <div class="popup relative w-[650px] max-h-[100vh] sm:mt-0">
+                <div
+                  class="close-btn absolute w-[30px] h-[30px] bg-black text-white text-center rounded-full cursor-pointer"
+                >
+                  &times;
+                </div>
+
+                <div class="kumoimg absolute w-[40%]">
+                  <img src="./img/kumo.png" alt="" />
+                </div>
+
+                <div class="kumotop absolute w-[40%]">
+                  <img src="./img/kumo.png" alt="" />
+                </div>
+
+                <section class="contact sm:mt-60">
+                  <svg
+                    class="logo w-[135px] h-[95px] m-auto"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <image
+                      class="m-auto"
+                      xlink:href="./img/logo.svg"
+                      width="120"
+                      height="90"
+                      alt="Logo"
+                    />
+                  </svg>
+                  <h1 class="text-sxll">聯絡我們</h1>
+                  <span class="hr w-[100px] h-[2px] block m-auto mb-10"></span>
+                  <form class="contact-form">
+                    <div class="form-group mt-4">
+                      <label class="flex" for="name">姓名</label>
+                      <input
+                        class="w-[290px] h-[35px] border-b focus-visible: outline-none border-gray-300 text-gray-500"
+                        type="text"
+                        name="name"
+                        id="name"
+                      />
+                    </div>
+
+                    <div class="form-group mt-4">
+                      <label class="flex" for="mobile">手機</label>
+                      <input
+                        class="w-[290px] h-[35px] border-b focus-visible: outline-none border-gray-300 text-gray-500"
+                        type="text"
+                        name="mobile"
+                        id="mobile"
+                      />
+                    </div>
+
+                    <div class="form-group mt-4">
+                      <label class="flex" for="phone">電話</label>
+                      <input
+                        class="w-[290px] h-[35px] border-b focus-visible: outline-none border-gray-300 text-gray-500"
+                        type="text"
+                        name="phone"
+                        id="phone"
+                      />
+                    </div>
+
+                    <div class="form-group mt-4">
+                      <label class="flex" for="email">E-mail</label>
+                      <input
+                        class="w-[290px] h-[35px] border-b focus-visible: outline-none border-gray-300 text-gray-500"
+                        type="text"
+                        name="email"
+                        id="email"
+                      />
+                    </div>
+
+                    <div class="form-group mt-4 relative">
+                      <label class="flex" for="relate">意見類型</label>
+                      <div>
+                        <input
+                          class="relate w-[290px] h-[35px] border-b focus-visible: outline-none border-gray-300 text-gray-500 cursor-pointer"
+                          type="text"
+                          name="relate"
+                          id="relate"
+                          readonly="readonly"
+                        />
+                      </div>
+                      <div
+                        class="relate-option w-[290px] cursor-pointer hidden border-solid text-left absolute"
+                      >
+                        <ul>
+                          <li>(無)</li>
+                          <li>環境問題</li>
+                          <li>地圖問題</li>
+                          <li>交通問題</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                      <label class="flex" for="comment">意見內容</label>
+                      <textarea
+                        class="comment w-[290px] border-b border-gray-300 focus-visible: outline-none text-gray-500"
+                        name=""
+                        id=""
+                        cols="30"
+                        rows="4"
+                      ></textarea>
+                    </div>
+
+                    <div class="flex justify-between mt-6 sm:mb-20">
+                      <button
+                        class="submit w-[120px] h-[35px] bg-yellow-800 text-white"
+                      >
+                        <span>送出</span>
+                      </button>
+
+                      <button
+                        class="clear-form w-[120px] h-[35px] bg-yellow-800 text-white"
+                        id="clear-form"
+                      >
+                        <span>清除</span>
+                      </button>
+                    </div>
+                  </form>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          <!-- mobile  -->
+          <div class="hamburger" id="hamburgerID">
+            <div>
+              <select
+                class="mobile-language-switcher bg-gray-800 text-white sm:w-20"
+              >
+                <option value="">中文</option>
+                <option value="">English</option>
+              </select>
+            </div>
+            <div class="hamburger-bar ml-10 mr-3">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <!---------END 固定------------------------------------------------------>
+    <!--END-->
+
+    <!-- Breadcrumb -->
+    <div class="wrapper">
+      <header class="container-top relative">
+        <img src="./img/li6.png" alt="" class="w-full h-14" />
+        <nav class="breadcrumb flex absolute" aria-label="Breadcrumb">
+          <ol
+            class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+          >
+            <li class="inline-flex items-center">
+              <a
+                href="./index.html"
+                class="inline-flex items-center text-sm font-medium dark:text-gray-400"
+              >
+                <svg
+                  class="w-3 h-3 me-2.5"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
+                  />
+                </svg>
+                首頁
+              </a>
+            </li>
+            <div class="flex items-center">
+              <svg
+                class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 6 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 9 4-4-4-4"
+                />
+              </svg>
+              <a
+                href="./daibutsuden.html"
+                class="ms-1 text-sm font-medium md:ms-2 dark:text-gray-400"
+                >大佛殿</a
+              >
+            </div>
+          </ol>
+        </nav>
+      </header>
+    </div>
+    <!-- Breadcrumb END -->
+    <!-- main -->
+    <div class="content-area relative">
+      <main class="site-main lg:m-7">
+        <section class="top-container">
+          <div class="top-site flex justify-center items-center">
+            <h2 class="text-xll mb-3">大佛殿</h2>
+          </div>
+
+          <div class="top-text flex justify-center items-center">
+            <p class="text-base text-yellow-700 mb-5">
+              Great Buddha Hall (Daibutsu-den)
+            </p>
+          </div>
+        </section>
+
+        <section class="top-title">
+          <p class="text-white text-center">國寶 / 17世紀</p>
+        </section>
+
+        <section class="daibustuden-img flex justify-center items-center mb-8">
+          <img src="./img/daibutsuden00.jpg" alt="" class="mt-6" />
+        </section>
+
+        <section class="daibutsuden-infor">
+          <div class="daibutsuden-main flex lg:block">
+            <div class="d-right lg:w-auto">
+              <div class="d-text">
+                <p class="tracking-widest leading-7 mb-5">
+                  東大寺的金堂。創建於奈良時代，其後於治承和永祿時兩度遭遇戰亂，現在的建築則是江戶時代由公慶上人重建的。不同的是，天平．鎌倉時代的大佛殿，桁架之間的間隔有十一個；而後來重建的則由於財政困難，規模縮小成了七個。即使如此，該殿高度和進深一如創建當時，堪稱世界上最大的木造建築物。
+                </p>
+                <span>規模：寬度 57.012m　長度 50.480m　高度 48.742m</span>
+              </div>
+
+              <div class="daibutsuden-notice mt-5">
+                <div class="wrapper-notice flex flex-row">
+                  <div class="notice-icon">
+                    <i
+                      class="fa-solid fa-circle-exclamation mr-3"
+                      style="color: #a02626"
+                    ></i>
+                  </div>
+                  <div class="notice-content">
+                    <h3>
+                      <span class="text-red-900 text-base">注意</span>
+                    </h3>
+                    <p class="text-ss">
+                      大佛殿内禁止写生以及使用手电筒。
+                      大佛殿的回廊、参道以及大佛殿内可自由拍摄。但是，禁止拍集体照和使用三脚架。
+                      禁止以广告、商业、盈利为目的的复制、转载、加工、贩卖与东大寺相关的图片。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-left flex lg:w-auto">
+              <div class="d-wrap lg:mt-6">
+                <div class="justify-center items-center">
+                  <h3 class="text-center mt-5 text-base">朱印</h3>
+                </div>
+                <div class="wp-caption p-6">
+                  <img class="lg:m-auto" src="./img/goshuin_kegon.jpg" alt="" />
+                  <p class="text-center">Kegon<br />(Skt. Avatamsa)</p>
+                </div>
+
+                <div
+                  class="d-button flex justify-center items-center lg:w-auto"
+                >
+                  <a href="#" class="text-white">查看更多</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="mt-10 w-full flex justify-center text-center lg:mt-20">
+        <h1 class="text-xll mb-4 border-b-[1px] border-black w-52 pb-2">
+          毘盧遮那佛
+        </h1>
+      </div>
+      <section class="top-title mb-3 lg:m-7">
+        <p class="text-white text-center">國寶 / 17世紀</p>
+      </section>
+
+      <section class="d-infor">
+        <div class="d-details flex md:block">
+          <div class="details-img">
+            <img class="" src="./img/daibutsuden02.jpg" alt="" />
+            <p class="m-auto">
+              尊像 像高14.98m / 目長1.02m / 耳長2.54m / 面長5.33m / 鼻高0.50m /
+              臺座高3.05m
+            </p>
+          </div>
+
+          <div class="details-text w-11/12 p-8 md:w-auto">
+            <span class="tracking-widest leading-7">
+              大佛的正式名稱是毘盧遮那佛，意為普照智慧和慈悲的光明佛。釋尊生於印度的伽毘那城，二十九歲時出家，此後經六年苦行，終於在尼連禪河畔的菩提樹下獲得了非凡的宗教體驗。《大方廣佛華嚴經》這部經典描述的正是釋尊超越時空、成佛瞬間的境象，述說了偉大、正確而廣大的佛陀世界是由菩薩的種種實踐之花來裝點的。按照這部經典的說法，鳥鳴、花色、水流、雲彩等一切皆是普度有情眾生的毘盧遮那佛所說之法。大佛尊像臺座周圍的蓮花瓣上，雕刻著被稱為“蓮華藏世界”的毛雕圖，即用繪畫方式來表達《華嚴經》所描述的“覺悟的世界”。它優美生動地表現了如下想法：不僅是我們每個人的存在如此，萬物都有無限的關聯和延展；而所有這些事物又都在毘盧遮那佛之光明的包圍之中。
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <div class="mt-10 w-full flex justify-center text-center">
+        <h1 class="text-xll mb-6 border-b-[1px] border-black w-52 pb-2">
+          八角燈籠
+        </h1>
+      </div>
+      <section class="top-title mb-3 lg:m-7">
+        <p class="text-white text-center">國寶 / 8世紀</p>
+      </section>
+
+      <section class="d-infor">
+        <div class="d-details flex md:flex-col-reverse">
+          <div class="details-text w-11/12 p-8 md:w-auto">
+            <span class="tracking-widest leading-7">
+              大佛的正式名稱是毘盧遮那佛，意為普照智慧和慈悲的光明佛。釋尊生於印度的伽毘那城，二十九歲時出家，此後經六年苦行，終於在尼連禪河畔的菩提樹下獲得了非凡的宗教體驗。《大方廣佛華嚴經》這部經典描述的正是釋尊超越時空、成佛瞬間的境象，述說了偉大、正確而廣大的佛陀世界是由菩薩的種種實踐之花來裝點的。按照這部經典的說法，鳥鳴、花色、水流、雲彩等一切皆是普度有情眾生的毘盧遮那佛所說之法。大佛尊像臺座周圍的蓮花瓣上，雕刻著被稱為“蓮華藏世界”的毛雕圖，即用繪畫方式來表達《華嚴經》所描述的“覺悟的世界”。它優美生動地表現了如下想法：不僅是我們每個人的存在如此，萬物都有無限的關聯和延展；而所有這些事物又都在毘盧遮那佛之光明的包圍之中。
+            </span>
+          </div>
+
+          <div class="details-img">
+            <img class="" src="./img/daibutsuden02.jpg" alt="" />
+            <p class="m-auto">
+              尊像 像高14.98m / 目長1.02m / 耳長2.54m / 面長5.33m / 鼻高0.50m /
+              臺座高3.05m
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!--------------footer 固定 ----------------------------------------->
+    <div class="pagetop relative">
+      <a href="#">
+        <img
+          class="pagetop-img absolute hvr-buzz-out"
+          src="./img/pagetop.png"
+          alt=""
+        />
+      </a>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="footer-wrapper flex justify-between sm:block">
+        <!-- left info -->
+        <div class="footer-info flex justify-between">
+          <div>
+            <div class="footer-logo">
+              <img
+                src="https://www.todaiji.or.jp/wp-content/uploads/2021/11/logo.svg"
+                class="logo"
+              />
+            </div>
+
+            <div class="footer-office">
+              <p>Contact</p>
+              |
+              <span>Tōdai-ji Office</span>
+            </div>
+
+            <div class="footer-adress">
+              <p>Address</p>
+              |
+              <span
+                >406-1 Zoushi-cho Nara-shi <br />
+                Nara-ken 630-8587</span
+              >
+            </div>
+
+            <div class="footer-tel">
+              <p>TEL</p>
+              |
+              <span>0742-22-5511</span>
+            </div>
+
+            <div class="footer-fax">
+              <p>FAX</p>
+              |
+              <span>0742-22-0808</span>
+            </div>
+          </div>
+
+          <div class="footer-info-right">
+            <div class="bg-white h-[30px] w-[160px] text-center my-2">
+              <a class="leading-[30px]">交通指南</a>
+            </div>
+            <div class="bg-white h-[30px] w-[160px] text-center my-2">
+              <a class="leading-[30px]">下載資料</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- right map -->
+        <div class="footer-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3611.618802478526!2d121.4332780753802!3d25.148575377742368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a57a4413ebd9%3A0x97aedc829435402c!2z5piO5ZyS5aSn5L2b5a-6!5e0!3m2!1szh-TW!2stw!4v1699411546612!5m2!1szh-TW!2stw"
+            width="100%"
+            height="100%"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+        </div>
+      </div>
+
+      <!-- /* icon area */ -->
+      <div
+        class="footer-icon-bar flex justify-between sm:flex-wrap sm:justify-center"
+      >
+        <div class="footer-icon-bar-wrapper flex justify-between">
+          <span><i class="fa fa-info-circle" aria-hidden="true"></i> 通知</span>
+          <span
+            ><i class="fa fa-map-marker" aria-hidden="true"></i>
+            寺廟境內地圖</span
+          >
+        </div>
+
+        <div class="footer-icon-bar-wrapper flex justify-between">
+          <li class="icon-item list-none text-xl">
+            <a href="">
+              <i class="fab fa-facebook-square"></i>
+            </a>
+          </li>
+
+          <li class="icon-item list-none text-xl">
+            <a href="">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+          </li>
+
+          <li class="icon-item list-none text-xl">
+            <a href="">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+
+          <li class="icon-item list-none text-xl">
+            <a href="">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+        </div>
+      </div>
+
+      <!-- footer menu -->
+      <div class="footer-sub-container">
+        <ul class="top-menu md:hidden">
+          <!-- 1 -->
+          <li class="top-item">
+            <a href="./history.html" class="hvr-pulse">東大寺歷史</a>
+            <ul class="footer-menu">
+              <li class="footer-item"><a href="">8世紀</a></li>
+              <li class="footer-item"><a href="">12-14世紀</a></li>
+              <li class="footer-item"><a href="">17-18世紀</a></li>
+              <li class="footer-item"><a href="">19世紀-</a></li>
+            </ul>
+          </li>
+          <!-- 2 -->
+          <li class="top-item">
+            <a href="./daibutsuden.html" class="hvr-pulse">參拜指南</a>
+            <ul class="footer-menu">
+              <li class="footer-item"><a href="">票價 參拜時間</a></li>
+              <li class="footer-item"><a href="">寺廟境內地圖</a></li>
+              <li class="footer-item"><a href="">大佛殿</a></li>
+              <li class="footer-item"><a href="">法華堂</a></li>
+            </ul>
+          </li>
+          <!-- 3 -->
+          <li class="top-item">
+            <a href="./event.html" class="hvr-pulse">每年定例活動與儀式</a>
+            <ul class="footer-menu">
+              <li class="footer-item"><a href="">每年定例活動與儀式</a></li>
+            </ul>
+          </li>
+          <!-- 4-->
+          <li class="top-item">
+            <a href="" class="hvr-pulse">交通指南</a>
+            <ul class="footer-menu">
+              <li class="footer-item"><a href="">東大寺四季彩感</a></li>
+              <li class="footer-item"><a href="">虛擬3D參拜</a></li>
+            </ul>
+          </li>
+          <!-- 5-->
+          <li class="top-item">
+            <a href="" class="openpopup hvr-pulse">聯絡我們</a>
+          </li>
+        </ul>
+
+        <!-- /*  RWD footer accordion */ -->
+        <ul class="accordion-menu hidden md:block">
+          <li>
+            <div class="dropdownlink">
+              <a href="./history.html">東大寺歷史</a>
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+              <li><a href="#">8世紀</a></li>
+              <li><a href="#">12-14世紀</a></li>
+              <li><a href="#">17-18世紀</a></li>
+              <li><a href="#">19世紀-</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="dropdownlink">
+              <a href="./daibutsuden.html">參拜指南</a>
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+              <li><a href="#">票價 參拜時間</a></li>
+              <li><a href="#">寺廟境內地圖</a></li>
+              <li><a href="#">大佛殿</a></li>
+              <li><a href="#">法華堂</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="dropdownlink">
+              <a href="./event.html">每年定例活動與儀式</a>
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+              <li><a href="#">每年定例活動與儀式</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="dropdownlink">
+              <a href="">交通指南</a>
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+              <li><a href="#">東大寺四季彩感</a></li>
+              <li><a href="#">虛擬3D參拜</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="dropdownlink">
+              <a href="" class="openpopup">聯絡我們</a>
+            </div>
+          </li>
+        </ul>
+
+        <div class="footer-translator">譯者: 王 馬吉</div>
+      </div>
+
+      <div class="footer-notice">
+        <p>
+          在這個寧靜的午後，陽光透過窗戶灑進房間，為一本打開的書籍投下溫暖的陰影。彷彿在和大地交談。<br />
+          本站所刊登的各種圖像文章等信息資料未經東大寺版權所有者授權，不得利用（複製、轉載、加工）
+        </p>
+      </div>
+
+      <p class="copyright">Copyright 2009-2023</p>
+    </footer>
+  </body>
+</html>
